@@ -5,12 +5,12 @@ services:
     build:
       context: .
     ports:
-      - "6000:6000"
+      - "8000:8000"
     volumes:
       - ./app:/app
     command: >
       sh -c "python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:6000"
+             python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=app
@@ -21,7 +21,9 @@ services:
 
   db:
     image: postgres:12-alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=app
+      - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=nm@123
+      - POSTGRES_PASSWORD=postgres

@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$w+kc$m^)$yje796wgi+81_a+pv9*2^o)wrh6^a6duxa5=n0q('
+SECRET_KEY = 'django-insecure-oz-57tik=&t%yty7pr6d7q&9a-@wt36z0tl15795kfqe#at(r!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "Profile"
+    "user",
 ]
 
 MIDDLEWARE = [
@@ -78,10 +78,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.environ.get('DB_HOST'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASS'),
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'nm@123',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
@@ -129,4 +130,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "Profile.UserProfile"
+AUTH_USER_MODEL = "user.UserProfile"

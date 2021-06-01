@@ -19,7 +19,7 @@ class UserProfileManager(BaseUserManager):
 
         return user
     
-    def create_super_user(self,email,name,password):
+    def create_superuser(self,email,name,password):
         """Create Super User"""
         user = self.create_user(email,name,password)
         user.is_superuser = True
@@ -53,4 +53,5 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     def __str__(self):
         """Return String representation of User"""
         return self.email
+
 
