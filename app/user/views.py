@@ -1,10 +1,10 @@
-from django.http import request
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
 from . import serializers
-from . import models
+from . import models, permission
 
 
 class DummyApiView(APIView):
@@ -97,3 +97,5 @@ class DummyViewSet(viewsets.ViewSet):
 class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ProfileSerializer
     queryset = models.UserProfile.objects.all()
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (permission.UpdateOwnProfile,)
